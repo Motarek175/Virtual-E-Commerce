@@ -1,0 +1,275 @@
+<div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 my-10">
+  <!-- Payment Details -->
+  <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+    <p class="text-xl font-medium">Payment Details</p>
+    <p class="text-gray-400">
+      Complete your order by providing your payment details.
+    </p>
+    <!-- Shipping Methods -->
+    <p class="mt-8 text-lg font-medium">Shipping Methods</p>
+    <form class="mt-5 grid grid-cols-2 gap-6">
+      <div class="relative">
+        <input
+          class="peer hidden"
+          id="radio_1"
+          type="radio"
+          name="radio"
+          (change)="selectPayment('bank')"
+          [checked]="bank | async"
+        />
+        <span
+          class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"
+        ></span>
+        <label
+          class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+          for="radio_1"
+        >
+          <div>
+            <span class="mt-2 font-semibold">Bank</span>
+          </div>
+        </label>
+      </div>
+      <div class="relative">
+        <input
+          class="peer hidden"
+          id="radio_2"
+          type="radio"
+          name="radio"
+          (change)="selectPayment('cash')"
+          [checked]="cash | async"
+        />
+        <span
+          class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"
+        ></span>
+        <label
+          class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+          for="radio_2"
+        >
+          <div>
+            <span class="mt-2 font-semibold">Cash on delivery</span>
+          </div>
+        </label>
+      </div>
+    </form>
+
+    <!-- Details -->
+    <!-- if cash -->
+    <div *ngIf="cash.value">
+      <!-- name -->
+      <label for="name" class="mt-4 mb-2 block text-sm font-medium">Name</label>
+      <div class="relative">
+        <input
+          type="text"
+          id="name"
+          name="Name"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- email -->
+      <label for="email" class="mt-4 mb-2 block text-sm font-medium"
+        >Email</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="email"
+          name="email"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- phone -->
+      <label for="phone" class="mt-4 mb-2 block text-sm font-medium"
+        >Phone Number</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- address1 -->
+      <label for="Address" class="mt-4 mb-2 block text-sm font-medium"
+        >Address 1</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="Address"
+          name="Address"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- address2 -->
+      <label for="Address2" class="mt-4 mb-2 block text-sm font-medium"
+        >Address 2 (Optional)</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="Address2"
+          name="Address2"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+    </div>
+    <!-- if bank -->
+    <div *ngIf="bank.value">
+      <!-- name -->
+      <label for="name" class="mt-4 mb-2 block text-sm font-medium">Name</label>
+      <div class="relative">
+        <input
+          type="text"
+          id="name"
+          name="Name"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- email -->
+      <label for="email" class="mt-4 mb-2 block text-sm font-medium"
+        >Email</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="email"
+          name="email"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- phone -->
+      <label for="phone" class="mt-4 mb-2 block text-sm font-medium"
+        >Phone Number</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- address1 -->
+      <label for="Address" class="mt-4 mb-2 block text-sm font-medium"
+        >Address 1</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="Address"
+          name="Address"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- address2 -->
+      <label for="Address2" class="mt-4 mb-2 block text-sm font-medium"
+        >Address 2 (Optional)</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="Address2"
+          name="Address2"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+      </div>
+      <!-- card holder name -->
+      <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium"
+        >Card Holder Name</label
+      >
+      <div class="relative">
+        <input
+          type="text"
+          id="card-holder"
+          name="card-holder"
+          class="w-full rounded-md border border-gray-200 px-4 py-3 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+        />
+        <div
+          class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
+        ></div>
+      </div>
+      <!-- card Number -->
+      <label for="card-no" class="mt-4 mb-2 block text-sm font-medium"
+        >Card Details</label
+      >
+      <div class="flex">
+        <div class="relative w-7/12 flex-shrink-0">
+          <input
+            type="text"
+            id="card-no"
+            name="card-no"
+            class="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+            placeholder="xxxx-xxxx-xxxx-xxxx"
+          />
+        </div>
+        <input
+          type="text"
+          name="credit-expiry"
+          class="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+          placeholder="MM/YY"
+        />
+        <input
+          type="text"
+          name="credit-cvc"
+          class="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+          placeholder="CVV"
+        />
+      </div>
+    </div>
+    <!-- btn place -->
+    <button
+      class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
+    >
+      Place Order
+    </button>
+  </div>
+  <!-- Order Summary -->
+  <div class="px-4 pt-8">
+    <p class="text-xl font-medium">Order Summary</p>
+    <p class="text-gray-400">
+      Check your items. And select a suitable shipping method.
+    </p>
+    <div class="mt-8 rounded-lg border bg-white px-2 py-4 sm:px-6">
+      <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+        <img
+          class="m-2 h-24 w-28 rounded-md border object-cover object-center"
+          src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          alt=""
+        />
+        <div class="flex w-full flex-col px-4 py-4">
+          <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
+          <span class="float-right text-gray-400">42EU - 8.5US</span>
+          <p class="text-lg font-bold">$138.99</p>
+        </div>
+      </div>
+      <div class="flex flex-col rounded-lg bg-white sm:flex-row">
+        <img
+          class="m-2 h-24 w-28 rounded-md border object-cover object-center"
+          src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          alt=""
+        />
+        <div class="flex w-full flex-col px-4 py-4">
+          <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
+          <span class="float-right text-gray-400">42EU - 8.5US</span>
+          <p class="mt-auto text-lg font-bold">$238.99</p>
+        </div>
+      </div>
+      <!-- Total -->
+      <div class="mt-6 border-t border-b py-2">
+        <div class="flex items-center justify-between">
+          <p class="text-sm font-medium text-gray-900">Subtotal</p>
+          <p class="font-semibold text-gray-900">$399.00</p>
+        </div>
+        <div class="flex items-center justify-between">
+          <p class="text-sm font-medium text-gray-900">Shipping</p>
+          <p class="font-semibold text-gray-900">$8.00</p>
+        </div>
+      </div>
+      <div class="mt-6 flex items-center justify-between">
+        <p class="text-sm font-medium text-gray-900">Total</p>
+        <p class="text-2xl font-semibold text-gray-900">$408.00</p>
+      </div>
+    </div>
+  </div>
+</div>
