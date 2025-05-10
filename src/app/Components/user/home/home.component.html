@@ -1,0 +1,214 @@
+<div class="mx-auto px-2 md:py-2 lg:px-8 lg:py-0">
+  <!-- Start Recommendation -->
+  <div class="mt-10 mb-5" *ngIf="this._UserAuthService.isUserLogin.getValue()">
+    <h2
+      class="pl-5 mb-5 relative text-2xl font-semibold text-[var(--main-color)] before:absolute before:bg-[var(--main-color)] before:content-[''] before:h-full before:w-3.5 before:rounded before:left-0"
+    >
+      Recommendation
+    </h2>
+    <h2 class="text-3xl text-black font-bold mb-5">Just For You</h2>
+    <div>
+      <p-carousel
+        [value]="products"
+        [numVisible]="numOfVisiable"
+        [circular]="false"
+        [responsiveOptions]="responsiveOptions"
+        autoplayInterval="3000"
+        [showNavigators]="products.length > 0 ? true : false"
+      >
+        <ng-template let-product #item>
+          <div class="relative rounded mx-5">
+            <button
+              class="absolute outline-0 right-2 top-2 bg-white px-2 py-1 border-2 border-transparent font-bold rounded-full cursor-pointer hover:text-red-600"
+            >
+              <i class="fa-regular fa-heart text-xl"></i>
+            </button>
+            <a>
+              <img
+                class="rounded-t-lg w-full h-[300px]"
+                [src]="product.imageUrl"
+                [alt]="product.name"
+              />
+            </a>
+            <div class="py-5 px-3">
+              <h5 class="mb-2 text-2xl font-bold">{{ product.name }}</h5>
+              <p class="mb-3 font-normal">{{ "$" + product.price }}</p>
+            </div>
+            <button
+              class="w-full cursor-pointer font-semibold bg-[var(--main-color)] text-white px-5 py-2 rounded-b-2xl"
+            >
+              Add To Cart
+            </button>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+  <!-- ------------------------*------------------------ -->
+
+  <!-- Start Landing -->
+  <div class="relative w-full mx-auto overflow-hidden mb-3 rounded-md">
+    <div
+      class="flex transition-transform duration-500 ease-in-out"
+      [ngStyle]="{ transform: 'translateX(-' + currentIndex * 100 + '%)' }"
+    >
+      <div
+        *ngFor="let img of images"
+        class="w-full relative h-fit flex-shrink-0 text-center"
+      >
+        <h2
+          class="absolute top-1/2 left-1/2 -translate-1/2 text-white opacity-100 z-10 text-xl md:text-2xl md:tracking-widest font-medium"
+        >
+          Shine the latest fashion this season
+        </h2>
+        <button
+          class="rounded-md px-4 py-1 bg-[var(--main-color)] text-white absolute top-[60%] cursor-pointer text-xl left-1/2 -translate-x-1/2 z-10"
+          routerLink="/shop"
+        >
+          Shop Now
+        </button>
+        <img [src]="img.imageUrl" class="w-full h-[500px]" />
+        <span
+          class="w-full h-full bg-black opacity-40 absolute top-0 left-0"
+        ></span>
+      </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button
+      (click)="prevSlide()"
+      class="absolute cursor-pointer top-1/2 left-5 md:left-20 -translate-y-1/2 bg-white w-10 h-10 rounded-full bg-opacity-50 p-2 rounded-full"
+    >
+      &#10094;
+    </button>
+    <button
+      (click)="nextSlide()"
+      class="absolute cursor-pointer top-1/2 right-5 md:right-20 -translate-y-1/2 bg-white w-10 h-10 rounded-full bg-opacity-50 p-2 rounded-full"
+    >
+      &#10095;
+    </button>
+    <!-- Indicators -->
+    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-2">
+      <span
+        *ngFor="let img of images; let i = index"
+        class="w-8 h-1"
+        [class.bg-white]="i === currentIndex"
+        [class.bg-gray-500]="i !== currentIndex"
+      ></span>
+    </div>
+  </div>
+  <!-- ------------------------*------------------------ -->
+
+  <!-- Start Best Selling -->
+  <div class="mt-10 mb-5">
+    <h2
+      class="pl-5 mb-5 relative text-2xl font-semibold text-[var(--main-color)] before:absolute before:bg-[var(--main-color)] before:content-[''] before:h-full before:w-3.5 before:rounded before:left-0"
+    >
+      Best Selling
+    </h2>
+    <h2 class="text-3xl text-black font-bold mb-5">Best Selling Products</h2>
+    <div>
+      <p-carousel
+        [value]="products"
+        [numVisible]="numOfVisiable"
+        [circular]="false"
+        [responsiveOptions]="responsiveOptions"
+        autoplayInterval="3000"
+        [showNavigators]="true"
+      >
+        <ng-template let-product #item>
+          <div class="relative rounded mx-5">
+            <button
+              class="absolute outline-0 right-2 top-2 bg-white px-2 py-1 border-2 border-transparent font-bold rounded-full cursor-pointer hover:text-red-600"
+            >
+              <i class="fa-regular fa-heart text-xl"></i>
+            </button>
+            <a>
+              <img
+                class="rounded-t-lg w-full h-[300px]"
+                [src]="product.imageUrl"
+                [alt]="product.name"
+              />
+            </a>
+            <div class="py-5 px-3">
+              <h5 class="mb-2 text-2xl font-bold">{{ product.name }}</h5>
+              <p class="mb-3 font-normal">{{ "$" + product.price }}</p>
+            </div>
+            <button
+              class="w-full cursor-pointer font-semibold bg-[var(--main-color)] text-white px-5 py-2 rounded-b-2xl"
+            >
+              Add To Cart
+            </button>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+  <!-- ------------------------*------------------------ -->
+
+  <!-- Start Discount -->
+  <div class="relative w-full mx-auto overflow-hidden rounded-md mt-10 mb-5">
+    <img src="./assets/image4.png" class="w-full h-[500px]" />
+    <div
+      class="flex w-fit gap-5 flex-col absolute z-10 left-2 md:left-12 top-1/2 -translate-y-1/2"
+    >
+      <h2 class="text-[#BA8C8C] font-bold text-xl sm:text-3xl">Categories</h2>
+      <h2
+        class="text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-medium"
+      >
+        Take advantage <br />
+        of discounts
+      </h2>
+      <button
+        class="w-fit cursor-pointer bg-[var(--main-color)] text-white font-medium text-center px-4 py-3 rounded-xl text-lg sm:text-xl"
+        routerLink="/shop"
+      >
+        Shop Now
+      </button>
+    </div>
+    <span
+      class="w-full h-full bg-[#333333] opacity-60 absolute top-0 left-0"
+    ></span>
+  </div>
+  <!-- ------------------------*------------------------ -->
+
+  <!-- Start Our Poruducts -->
+  <div class="mt-10 mb-5">
+    <h2
+      class="pl-5 mb-5 relative text-2xl font-semibold text-[var(--main-color)] before:absolute before:bg-[var(--main-color)] before:content-[''] before:h-full before:w-3.5 before:rounded before:left-0"
+    >
+      Our Products
+    </h2>
+    <h2 class="text-3xl text-black font-bold mb-5">Explore Our Products</h2>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-8"
+    >
+      @for (product of products; track $index) {
+      <div class="relative rounded">
+        <button
+          class="absolute outline-0 right-2 top-2 bg-white px-2 py-1 border-2 border-transparent font-bold rounded-full cursor-pointer hover:text-red-600"
+        >
+          <i class="fa-regular fa-heart text-xl"></i>
+        </button>
+        <a>
+          <img
+            class="rounded-t-lg w-full h-[300px]"
+            [src]="product.imageUrl"
+            [alt]="product.name"
+          />
+        </a>
+        <div class="py-5 px-3">
+          <h5 class="mb-2 text-2xl font-bold">{{ product.name }}</h5>
+          <p class="mb-3 font-normal">{{ "$" + product.price }}</p>
+        </div>
+        <button
+          class="w-full cursor-pointer font-semibold bg-[var(--main-color)] text-white px-5 py-2 rounded-b-2xl"
+        >
+          Add To Cart
+        </button>
+      </div>
+      }
+    </div>
+  </div>
+  <!-- ------------------------*------------------------ -->
+</div>
